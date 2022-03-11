@@ -1,0 +1,28 @@
+﻿New Table( "Little Class",
+	Add Rows( 6 ),
+	New Column( "Opinión",
+		Character,
+		"Nominal",
+		Set Values( {"5", "4", "3", "2", "1", "0"} )
+	),
+	New Column( "Cantidad de votantes",
+		Numeric,
+		"Ordinal",
+		Format( "Best", 10 ),
+		Set Values( [40, 99, 145, 133, 96, 40] ),
+		Set Display Width( 128 )
+	),
+	Set Label Columns( :Opinión )
+) << Run Formulas;
+Graph Builder(
+	Variables( X( :Opinión ), Y( :Cantidad de votantes ) ),
+	Elements( Smoother( X, Y, Legend( 15 ) ) ),
+	SendToReport(
+		Dispatch(
+			{},
+			"Graph Builder",
+			FrameBox,
+			{Grid Line Order( 1 ), Reference Line Order( 2 )}
+		)
+	)
+);

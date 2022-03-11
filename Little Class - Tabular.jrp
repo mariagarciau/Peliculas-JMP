@@ -1,0 +1,27 @@
+﻿New Table( "Little Class",
+	Add Rows( 6 ),
+	New Column( "Opinión (Xi)",
+		Character,
+		"Nominal",
+		Set Values( {"5", "4", "3", "2", "1", "0"} )
+	),
+	New Column( "Cantidad de votantes (Ni)",
+		Numeric,
+		"Ordinal",
+		Format( "Best", 10 ),
+		Set Values( [40, 99, 145, 133, 96, 40] )
+	),
+	New Column( "Productos(Ni*Xi)",
+		Numeric,
+		"Continuous",
+		Format( "Best", 12 ),
+		Set Values( [200, 396, 435, 266, 96, 0] )
+	),
+	Set Label Columns( :"Opinión (Xi)"n )
+) << Run Formulas;
+Tabulate(
+	Add Table(
+		Column Table( Analysis Columns( :"Productos(Ni*Xi)"n ) ),
+		Column Table( Analysis Columns( :"Cantidad de votantes (Ni)"n ) )
+	)
+);

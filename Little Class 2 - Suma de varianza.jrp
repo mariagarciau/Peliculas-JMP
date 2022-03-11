@@ -1,0 +1,52 @@
+﻿New Table( "Little Class 2",
+	Add Rows( 6 ),
+	New Column( "Opinión (Xi)",
+		Character,
+		"Nominal",
+		Set Values( {"5", "4", "3", "2", "1", "0"} )
+	),
+	New Column( "Cantidad de votantes (Ni)",
+		Numeric,
+		"Ordinal",
+		Format( "Best", 10 ),
+		Set Values( [40, 99, 145, 133, 96, 40] )
+	),
+	New Column( "Productos(Ni*Xi)",
+		Numeric,
+		"Continuous",
+		Format( "Best", 12 ),
+		Set Values( [200, 396, 435, 266, 96, 0] )
+	),
+	New Column( "Suma Ni",
+		Numeric,
+		"Continuous",
+		Format( "Best", 12 ),
+		Set Values( [553, ., ., ., ., .] )
+	),
+	New Column( "Suma Ni*Xi",
+		Numeric,
+		"Continuous",
+		Format( "Best", 12 ),
+		Set Values( [1393, ., ., ., ., .] ),
+		Set Display Width( 76 )
+	),
+	New Column( "Media",
+		Numeric,
+		"Continuous",
+		Format( "Best", 12 ),
+		Set Values( [251, ., ., ., ., .] ),
+		Set Display Width( 48 )
+	),
+	New Column( "Varianza Ni*((Xi-media)^2)",
+		Numeric,
+		"Continuous",
+		Format( "Best", 12 ),
+		Set Values( [246.21, 217.14, 33.54, 35.82, 221.5, 253.81] )
+	),
+	Set Label Columns( :"Opinión (Xi)"n )
+) << Run Formulas;
+Tabulate(
+	Add Table(
+		Column Table( Analysis Columns( :Suma Ni, :"Varianza Ni*((Xi-media)^2)"n ) )
+	)
+);
